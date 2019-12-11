@@ -25,7 +25,11 @@
 <div class="row my-5">
   <div class="col">
     <div>
-      <a href="{% url 'sales:new_customer' %}" class="btn btn-outline-success btn-lg">New Customer</a>
+        {% if user.is_authenticated %}
+            {% if user.profile.is_sales  %}
+                <a href="{% url 'sales:new_customer' %}" class="btn btn-outline-success btn-lg">New Customer</a>
+            {% endif %}
+        {% endif %}
     </div>
   </div>
 </div>
