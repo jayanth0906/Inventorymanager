@@ -3,6 +3,68 @@
 {% block title %}Logged out{% endblock %}
 
 {% block content %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Maverick Inventory management </title>
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" text="text/css">
+  </head>
+
+  <body>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'index' %}">Maverick inventory management</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            {% if user.is_authenticated %}
+                {% if user.profile.is_sales  %}
+                    <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="{% url 'sales:index' %}">Sales <span class="sr-only">(current)</span></a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        <li class="nav-item">
+            {% if user.is_authenticated %}
+                {% if user.profile.is_warehouse  %}
+                    <a class="nav-link"  href="{% url 'warehouse:index' %}">Warehouse <span class="sr-only">(current)</span></a>
+                {% endif %}
+            {% endif %}
+        </li>
+
+
+    </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{% url 'logout' %}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+
+                        </ul>
+                    </li>
+                {% else %}
+
+                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% endif %}
+            </ul>
+  </div>
+</nav>
   <h1>Logged out</h1>
   <p>You have been successfully logged out. You can <a href="{% url "login" %}">log-in again</a>.</p>
 {% endblock %}
