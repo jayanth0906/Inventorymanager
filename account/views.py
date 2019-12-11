@@ -72,7 +72,7 @@ def user_login(request):
 @login_required
 def dashboard(request):
     return render(request,
-                  'final/index.html',
+                  'Final/index.html',
                   {'section': 'dashboard'})
 
 
