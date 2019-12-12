@@ -36,7 +36,7 @@ class Order(models.Model):
     )
     order_number = models.AutoField(primary_key=True, unique=True)
     date_ordered = models.DateField()
-    ship_date = models.DateField()
+    ship_date = models.DateField(blank=True)
     emp_init = models.CharField(max_length=3)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     po_number = models.CharField(max_length=50, null=True, blank=True)

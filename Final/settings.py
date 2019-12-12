@@ -25,10 +25,10 @@ SECRET_KEY = '9y2k4b#9n5=z+h+yb#82t7!uts&ju+2@!6_yxv1-a#6kq%22(n'
 # SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '9y2k4b#9n5=z+h+yb#82t7!uts&ju+2@!6_yxv1-a#6kq%22(n')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 # DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.heroku, 127.0.0.1, localhost']
 
 
 # Application definition
@@ -164,10 +164,8 @@ except ImportError:
     pass
 
 
-
-
-#SECURE_BROWSER_XSS_FILTER = True
-#X_FRAME_OPTIONS ='DENY'
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS ='DENY'
 
 
 
